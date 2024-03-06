@@ -1,0 +1,11 @@
+class Solution:
+    def search(self, pattern, text):
+        # code here
+        a=text.find(pattern)
+        l=[a+1]
+        i=a
+        while(i!=-1):
+            a=text.find(pattern,i+1)
+            l.append(a+1)
+            i=a
+        return l[:-1]
