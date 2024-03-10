@@ -1,0 +1,7 @@
+class Solution:
+    def removeDuplicates(self,str):
+        a=[]
+        for i in range(len(str)):
+            if str[i:i+1] not in str[0:i]:
+                a.append(str[i:i+1])
+        return "".join(a)
