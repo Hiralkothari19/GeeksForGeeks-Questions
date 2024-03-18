@@ -1,0 +1,18 @@
+class Solution:
+    #Function to return the level order traversal of a tree.
+    def levelOrder(self,root):
+        # Code here
+        queue = [root]
+        res = []
+        
+        while queue:
+            current = queue[0]
+            queue = queue[1:]
+            
+            if current.left:
+                queue.append(current.left)
+                
+            if current.right:
+                queue.append(current.right)
+            res.append(current.data)
+        return res
