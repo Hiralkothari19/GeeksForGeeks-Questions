@@ -1,0 +1,23 @@
+class Solution:
+    def solve(self, ans, cur, zeros, ones, n):
+        if ones<zeros:
+            return
+        if len(cur[0]) == n:
+            ans.append(cur[0])
+            return
+        
+        cur[0]+='1'
+        self.solve(ans, cur, zeros, ones+1, n)
+        cur[0] = cur[0][:-1]
+        
+        cur[0]+='0'
+        self.solve(ans, cur, zeros+1, ones, n)
+        cur[0] = cur[0][:-1]
+        
+        return
+        
+	def NBitBinary(self, n):
+	    ans = []
+	    cur = ['']
+	    self.solve(ans, cur, 0, 0, n)
+	    return ans
