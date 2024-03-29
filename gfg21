@@ -1,0 +1,11 @@
+from collections import Counter
+class Solution:
+	def isEularCircuitExist(self, v, adj):
+	    l=[]
+        for i in adj:
+            l+=i
+        c=Counter(l)
+        for i in c.keys():
+            if c[i]%2==1:
+                return 0
+        return 1
