@@ -1,0 +1,14 @@
+class Solution:
+    #Function to find the minimum element in the given BST.
+    def minValue(self, root):
+        ##Your code here
+        res=[]
+        def fun(root):
+            if not root : return None 
+            if root : res.append(root.data)
+            if root.left : fun(root.left)
+            
+            
+            
+        fun(root)
+        return min(res)
