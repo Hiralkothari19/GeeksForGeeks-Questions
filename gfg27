@@ -1,0 +1,15 @@
+def sumSubstrings(self,s):
+        
+        # code here
+        res=0;
+        mod=10**9+7;
+        n=len(s);
+        base=10
+        for i in range(n-1,-1,-1):
+            left=i-1;
+            right=n-1-i;
+            num=int(s[i]);
+            rightySum=((base-1)*num)//9;
+            res=res+rightySum*(left+2);
+            base*=10
+        return res%mod;
