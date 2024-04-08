@@ -1,0 +1,21 @@
+import sys
+sys.setrecursionlimit(10**7)
+class Solution:
+    def optimalStrategyOfGame(self,n, arr):
+        # code here
+        def f(i,j,s):
+            if i>j:
+                return 0
+            if i == j:
+                return arr[i]
+            if (i,j) in dp:
+                return dp[(i,j)]
+            p1 = arr[j] + s - arr[j] - f(i,j-1,s-arr[j])
+            p2 = arr[i] + s- arr[i] - f(i+1,j,s-arr[i])
+            
+            dp[(i,j)] = max(p1,p2)
+            return dp[(i,j)]
+        
+        dp = {}
+        s = sum(arr)
+        return f(0,n-1,s)
