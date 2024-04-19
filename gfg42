@@ -1,0 +1,4 @@
+class Solution:
+    def findMissing(self,a,b,n,m):
+        b = set(b)
+        return [i for i in a if i not in b]
