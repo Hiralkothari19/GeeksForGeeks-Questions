@@ -1,0 +1,14 @@
+def threeWayPartition(self, arr, a, b):
+	    # code here 
+	    start,end,i=0,len(arr)-1,0
+	    while i<=end:
+	        if arr[i]<a:
+	            arr[i],arr[start]=arr[start],arr[i]
+	            i+=1
+	            start+=1
+	        elif arr[i]>b:
+	            arr[i],arr[end]=arr[end],arr[i]
+	            end-=1
+	        else:
+	            i+=1
+	    return arr
