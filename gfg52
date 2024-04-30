@@ -1,0 +1,92 @@
+class Node:
+    def __init__(self, data):
+        # Initialize a node with data and next pointer.
+        self.data = data
+        self.next = None
+
+class Solution:
+    # Function to reverse a linked list.
+    def reverseLinkedlist(self, head):
+        # Initialize pointers for previous, current, and next nodes.
+        prev = None
+        curr = head
+        nxt = None
+        
+        # Traverse the list, reversing pointers along the way.
+        while curr:
+            nxt = curr.next
+            curr.next = prev
+            prev = curr
+            curr = nxt
+        
+        # Return the new head of the reversed list.
+        return prev
+    
+    # Function to add two numbers represented by linked lists.
+    def addTwoLists(self, num1, num2):
+        # Removing leading zeros from num1
+        temp = None
+        while num1 and num1.data == 0:
+            temp = num1
+            num1 = num1.next
+        if temp is not None:
+            temp.next = None
+        
+        # Removing leading zeros from num2
+        temp = None
+        while num2 and num2.data == 0:
+            temp = num2
+            num2 = num2.next
+        if temp is not None:
+            temp.next = None
+        
+        # Handling edge cases when one or both numbers are empty
+        if num1 == None and num2 == None:
+            return Node(0)
+        if num1 is None:
+            return num2
+        if num2 is None:
+            return num1
+
+        # Reversing both linked lists to simplify addition
+        num1 = self.reverseLinkedlist(num1)
+        num2 = self.reverseLinkedlist(num2)
+        
+        # Creating a dummy node to store the result
+        temp = Node(1)
+        ans = temp
+        carry = 0
+        head1 = num1
+        head2 = num2
+        
+        # Iterating through both linked lists to perform addition
+        while head1 and head2:
+            summ = head1.data + head2.data + carry
+            carry = summ // 10
+            temp.next = Node(summ % 10)
+            temp = temp.next
+            head1 = head1.next
+            head2 = head2.next
+        
+        # Adding remaining digits of num1, if any
+        while head1:
+            summ = head1.data + carry
+            carry = summ // 10
+            temp.next = Node(summ % 10)
+            temp = temp.next
+            head1 = head1.next
+        
+        # Adding remaining digits of num2, if any
+        while head2:
+            summ = head2.data + carry
+            carry = summ // 10
+            temp.next = Node(summ % 10)
+            temp = temp.next
+            head2 = head2.next
+        
+        # Adding the final carry, if any
+        if carry:
+            temp.next = Node(carry)
+        
+        # Reversing the result to get the correct order
+        return self.reverseLinkedlist(ans.next)
