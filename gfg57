@@ -1,0 +1,24 @@
+class Node:
+    def __init__(self, val):
+        # Initialize a node with left, right children, and data value.
+        self.right = None
+        self.data = val
+        self.left = None
+
+def help(root, ans):
+    # Helper function to traverse the tree and collect nodes with no siblings.
+    if root == None:
+        return
+    if root.left == None or root.right == None:
+        if root.left:
+            ans.append(root.left.data)  # If only left child, add its data to ans.
+        if root.right:
+            ans.append(root.right.data)  # If only right child, add its data to ans.
+    help(root.left, ans)  # Recursively traverse left subtree.
+    help(root.right, ans)  # Recursively traverse right subtree.
+
+def noSibling(root):
+    ans = []
+    help(root, ans)  # Call the helper function to populate the ans list.
+    ans.sort()  # Sort the list in ascending order.
+    return ans if len(ans) >= 1 else [-1]  # Return the ans list or [-1] if no such nodes exist.
