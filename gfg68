@@ -1,0 +1,11 @@
+def findPair(self, n : int, x : int, arr : List[int]) -> int:
+        # code here
+        
+        hmap = {}
+        for i in range(n):
+            if arr[i] in hmap:
+                return 1
+            hmap[arr[i] + x] = 1
+            hmap[arr[i] - x] = 1
+        return -1
+            
