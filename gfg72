@@ -1,0 +1,57 @@
+class Solution:
+    def printKClosest(self, arr, n, k, x):
+        # Function to find the crossover point: the largest element less than or equal to x
+        def findCrossOver(arr, low, high, x):
+            # If x is greater than or equal to the last element, return high
+            if arr[high] <= x:
+                return high
+            # If x is smaller than the first element, return low
+            if arr[low] > x:
+                return low
+            # Find the middle point
+            mid = (low + high) // 2
+            # Check if mid is the crossover point
+            if arr[mid] <= x and arr[mid + 1] > x:
+                return mid
+            # If x is greater than arr[mid], search in the right half
+            elif arr[mid] < x:
+                return findCrossOver(arr, mid + 1, high, x)
+            # Otherwise, search in the left half
+            return findCrossOver(arr, low, mid - 1, x)
+
+        # Find the crossover point
+        id1 = findCrossOver(arr, 0, n - 1, x)
+        # Initialize the right index
+        id2 = id1 + 1
+
+        # If x is present in arr[], ignore it by moving id1 one step back
+        if arr[id1] == x:
+            id1 -= 1
+
+        # Result array to store k closest elements
+        ans = [0] * k
+
+        # Find the k closest elements
+        for i in range(k):
+            # If there are elements on both sides of the crossover point
+            if id1 >= 0 and id2 < n:
+                # Calculate the differences from x
+                val1 = x - arr[id1]
+                val2 = arr[id2] - x
+                # If left element is closer or equal (with preference to the greater element)
+                if val1 < val2 or (val1 == val2 and arr[id1] > arr[id2]):
+                    ans[i] = arr[id1]
+                    id1 -= 1
+                else:
+                    ans[i] = arr[id2]
+                    id2 += 1
+            # If there are only elements on the left side
+            elif id1 >= 0:
+                ans[i] = arr[id1]
+                id1 -= 1
+            # If there are only elements on the right side
+            else:
+                ans[i] = arr[id2]
+                id2 += 1
+        
+        return ans
