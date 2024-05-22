@@ -1,0 +1,23 @@
+class Solution:
+    def noOfGasStationsBetween(self, stations, dist):
+        count = 0
+        n = len(stations)
+        
+        for i in range(n - 1):
+            count += int((stations[i + 1] - stations[i]) / dist)
+        
+        return count
+    
+    def findSmallestMaxDist(self, stations, K):
+        n = len(stations)
+        low, high = 0, max(stations[i + 1] - stations[i] for i in range(n - 1))
+        diff = 1e-6
+        
+        while high - low > diff:
+            mid = (low + high) / 2
+            if self.noOfGasStationsBetween(stations, mid) <= K:
+                high = mid
+            else:
+                low = mid
+        
+        return round(high, 2)
