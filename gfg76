@@ -1,0 +1,11 @@
+ def max_Books(self, n, k, arr):
+        #code here
+        ans=0
+        temp=0
+        for i in range(n):
+            if arr[i] <= k:
+                temp+=arr[i]
+                ans=max(temp,ans)
+            else:
+                temp=0
+        return ans
