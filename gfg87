@@ -1,0 +1,22 @@
+class Solution:
+    #Complete this function
+    #Function to find the maximum occurred integer in all ranges.
+    def maxOccured(self,n, l, r, maxx):
+        ##Your code here
+        starting_range=[0]*(maxx+1)
+        ending_range=[0]*(maxx+1)
+        for i in range(n):
+            start,end=l[i],r[i]
+            starting_range[start]+=1
+            ending_range[end]+=1
+            
+        max_freq,res=0,0
+        curr_freq=0
+        for i in range(0,maxx+1):
+            curr_freq+=starting_range[i]
+            if(curr_freq>max_freq):
+                max_freq=curr_freq
+                res=i
+            curr_freq-=ending_range[i]
+        return res
+            
