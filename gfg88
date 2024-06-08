@@ -1,0 +1,4 @@
+class Solution:
+    def findExtra(self,n,a,b):
+        c=set(a)-set(b)
+        return a.index(list(c)[0])
