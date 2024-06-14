@@ -1,0 +1,15 @@
+class Solution:
+    def armstrongNumber (self, n):
+        # Extract the digits
+        hundreds = n // 100
+        tens = (n // 10) % 10
+        units = n % 10
+        
+        # Compute the sum of the cubes of the digits
+        sum_of_cubes = (hundreds ** 3) + (tens ** 3) + (units ** 3)
+        
+        # Check if the sum of the cubes is equal to the original number
+        if sum_of_cubes == n:
+            return "Yes"
+        else:
+            return "No"
