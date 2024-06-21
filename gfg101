@@ -1,0 +1,11 @@
+class Solution:
+    def compareFrac (self, s):
+        x=s.split(", ")
+        a,b = x[0].split("/")
+        c,d = x[1].split("/")
+        if (int(a)/int(b))>(int(c)/int(d)):
+            return x[0]
+        elif (int(c)/int(d))>(int(a)/int(b)):
+            return x[1]
+        else:
+            return "equal"
