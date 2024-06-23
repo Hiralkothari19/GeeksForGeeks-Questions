@@ -1,0 +1,14 @@
+class Solution:
+	
+	def bracketNumbers(self, s):
+		v,k = 0,[] # k is our stack
+		res = []
+		for i in s:
+		    if i=='(':
+		        v+=1
+		        k.append(v)
+		        res.append(v)
+		    if i==')':
+		        x = k.pop()
+		        res.append(x)
+        return res
