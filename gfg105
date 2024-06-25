@@ -1,0 +1,13 @@
+def rotate(lis, k):
+    lis = lis[k % len(lis):] + lis[:k % len(lis)]
+    return lis
+
+
+class Solution:
+    def rotateMatrix(self, k, mat):
+        output = []
+        for x in mat:
+            temp = rotate(x, k)
+            output.append(temp)
+        return output
+ 
