@@ -1,0 +1,25 @@
+'''
+class ListNode:
+
+    # Constructor to create a new node
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+# Tree Node structure
+class Tree:
+
+    # Constructor to create a new node
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+'''
+
+#Function to make binary tree from linked list.
+def convert(head):
+  
+    # code here
+    print(*a)
