@@ -1,0 +1,28 @@
+"""
+# Linked list Node class
+
+    class Node :
+        def __init__(self, val):
+            self.data = val
+            self.next = None
+
+"""
+
+class Solution:
+    def removeAllDuplicates(self, head):
+        temp = Node(-1)
+        n = temp
+        while head is not None:
+            cnt = 1
+            while head.next is not None and head.data ==              head.next.data:
+                cnt+=1
+                head = head.next
+            if cnt == 1:
+                new_node = Node(head.data)
+                n.next = new_node
+                n = n.next
+            head = head.next
+        
+        return temp.next
+#{ 
+
