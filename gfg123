@@ -1,0 +1,17 @@
+class Solution:
+    def segregate0and1(self, arr):
+        # code here
+        cnt0 = 0
+        cnt1 = 0
+        for i in arr:
+            if i==0:
+                cnt0+=1
+            else:
+                cnt1+=1
+        lastcnt =0  
+        # print(cnt0,cnt1)
+        for i in range(cnt0):
+            arr[i] = 0
+            lastcnt+=1
+        for i in range(lastcnt,len(arr)):
+            arr[i] = 1
