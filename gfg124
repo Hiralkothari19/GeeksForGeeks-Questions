@@ -1,0 +1,14 @@
+class Solution:
+    def smallestNumber(self, s, d):
+        # code here
+        def digitSum(n):
+            a=0
+            while n>0:
+                a+=n%10
+                n//=10
+            return a
+        for i in range(10**(d-1),10**d):
+            if digitSum(i)==s:
+                return i
+                break
+        return -1
