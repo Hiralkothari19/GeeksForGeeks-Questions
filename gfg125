@@ -1,0 +1,15 @@
+class Solution:
+	def printString(self, s, ch, count):
+		# code here
+
+       if ch not in s:
+           return ''
+       mini = s.find(ch)
+       maxi = len(s)
+       count -= 1
+       while ch in s[mini+1:maxi] and count > 0:
+           mini = s.find(ch,mini+1,maxi)
+           count -= 1
+       if count > 0:
+           return ''
+       return s[mini+1:maxi]
