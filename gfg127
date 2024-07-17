@@ -1,0 +1,34 @@
+
+'''
+# A node structure
+class Node:
+    # A utility function to create a new node
+    def __init__(self, key):
+        self.key = key
+        self.left = None
+        self.right = None
+'''
+class Solution:
+    #Function to construct binary tree from parent array.
+    def createTree(self,parent):
+        n = len(parent)
+        # create an arry to store created nodes
+        created = [None]*n
+        
+        root = None
+        
+        for i in range(n):
+            if created[i] is None:
+                created[i] = Node(i)
+            if parent[i] == -1:
+                root = created[i]
+            else:
+                if created[parent[i]] is None:
+                    created[parent[i]] = Node(parent[i])
+                    
+                p = created[parent[i]]
+                if p.left is None:
+                    p.left = created[i]
+                else:
+                    p.right = created[i]
+        return root
