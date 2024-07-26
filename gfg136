@@ -1,0 +1,11 @@
+class Solution:
+    def kPangram(self,string, k):
+        total,unique,isPresent=0,0,[False]*26
+        for val in string:
+            if val.isalpha():
+                total+=1
+                i=ord(val)-ord("a")
+                if not isPresent[i]:
+                    isPresent[i]=True
+                    unique+=1
+        return 26-unique<=k and total>=26
