@@ -1,0 +1,16 @@
+class Solution:
+    def celebrity(self, mat):
+        m=len(mat)
+        sta=0
+        sto=m-1
+        while sta<sto:
+            if mat[sta][sto]==1:
+                sta+=1
+            else:
+                sto-=1
+        for ix in range(m):
+            if ix==sto:
+                continue
+            if mat[ix][sto]!=1 or mat[sto][ix]!=0:
+                return -1
+        return sto
