@@ -1,0 +1,7 @@
+class Solution:
+    def kthElement(self, k, arr1, arr2):
+        ans = arr1 + arr2
+        ans.sort()
+        
+        return ans[k-1]        
+        
