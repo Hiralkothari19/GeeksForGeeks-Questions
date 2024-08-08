@@ -1,0 +1,29 @@
+class Solution:
+    def is_sum_tree(self, node):
+        # Helper function to determine if a tree is a sum tree and to compute the sum of its nodes
+        def is_sum_tree_helper(node):
+            # Base case: If the node is None, it is considered a sum tree with sum 0
+            if node is None:
+                return 0, True
+            
+            # Base case: If the node is a leaf node, it is considered a sum tree with its own value as the sum
+            if node.left is None and node.right is None:
+                return node.data, True
+            
+            # Recursively check the left subtree
+            left_sum, is_left_sum_tree = is_sum_tree_helper(node.left)
+            # Recursively check the right subtree
+            right_sum, is_right_sum_tree = is_sum_tree_helper(node.right)
+            
+            # The total sum of the left and right subtrees
+            total_sum = left_sum + right_sum
+            # Check if the current node satisfies the sum tree property
+            is_sum_tree = (node.data == total_sum) and is_left_sum_tree and is_right_sum_tree
+            
+            # Return the sum of the subtree rooted at this node and whether it is a sum tree
+            return total_sum + node.data, is_sum_tree
+        
+        # Start the helper function from the root node
+        _, result = is_sum_tree_helper(node)
+        # Return the result
+        return result
