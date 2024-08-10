@@ -1,0 +1,23 @@
+class Solution:
+    def rotate(self, head, k):
+        current = head  # Pointer to traverse the linked list
+        reversedPart = None  # Pointer to store the reversed portion of the list
+        remainingRotations = k  # Counter for the number of rotations
+
+        # Find the last node of the list
+        lastNode = head
+        while lastNode.next is not None:
+            lastNode = lastNode.next
+
+        # Perform the rotation for the specified number of times
+        while remainingRotations != 0 and current is not None:
+            nextNode = current.next  # Store the next node
+            head = nextNode  # Move the head to the next node
+            current.next = reversedPart  # Reverse the current node's next pointer
+            lastNode.next = current  # Attach the reversed node at the end of the list
+            lastNode = lastNode.next  # Move to the new last node
+            current = nextNode  # Move to the next node
+            remainingRotations -= 1  # Decrease the number of rotations left
+
+        return head  # Return the new head of the rotated list
+ 
