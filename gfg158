@@ -1,0 +1,11 @@
+class Solution:
+    def canSplit(self, arr):
+        s=sum(arr)
+        cs=0
+        for i in arr:
+            cs+=i
+            if cs>s-cs:
+                return False
+            elif cs==s-cs:
+                return True
+
