@@ -1,0 +1,23 @@
+def LeftView(root):
+    if not root:
+        return []
+    
+    result = []
+    queue = deque([root])
+    
+    while queue:
+        level_size = len(queue)
+        # Traverse nodes at the current level
+        for i in range(level_size):
+            node = queue.popleft()
+            # The first node of each level is part of the left view
+            if i == 0:
+                result.append(node.data)
+            # Enqueue left child first, then right child
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+    
+    return result
+
