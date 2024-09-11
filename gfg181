@@ -1,0 +1,15 @@
+class Solution {
+    public long minCost(long[] arr) {
+        PriorityQueue<Long> pq = new PriorityQueue<>();
+        for(long i:arr) pq.add(i);
+        long ans=0;
+        while(pq.size()>1){
+            long a = pq.remove();
+            long b = pq.remove();
+            long cost = a+b;
+            ans += cost;
+            pq.add(cost);
+        }
+        return ans;
+    }
+}
