@@ -1,0 +1,55 @@
+class Solve {
+    int[] findTwoElement(int arr[]) {
+        
+
+        long n=arr.length;
+        
+        int repeatingNum=0,curSum=0;
+        
+        long asum= ((n*(n+1))/2);
+        
+        
+        // here we are trying to find the repeating number
+        // instead of creating seperate array to store freq
+        // we will convert the value i-1 index to negative.
+        // negative number means that value is already present and it is our repeating number.
+        
+        // why this approach work is becoz there are no negative numbers in given array.
+        for(int i:arr) {
+            
+            // checking if the index is already visited
+            
+            int ind=Math.abs(i);
+            if(arr[ind-1]<0)
+                repeatingNum=ind;
+            else
+                arr[ind-1] *=-1;
+            
+            
+            curSum+= ind;
+        }
+        
+        
+        int[] res = new int[2];
+        
+        res[0] = repeatingNum;
+        
+        // if we observe there is a pattern
+        // missing number = asum - curSum + repeatingNum;
+        
+        // for example:
+        // 1 3 3 --> (3*(3+1)/2)=6 ~ asum
+        // 1 3 3 -> curSum=7;
+        // missing number = 6-7 + 3  == 2
+        
+        // example 2:
+        // 1 1 2 -> asum=6,curSum=4
+        // missing = 6-4+1 == 3;
+        res[1] = (int)asum - curSum + repeatingNum;
+        
+        
+        return res;
+        
+    }
+}
+ 
