@@ -1,0 +1,23 @@
+class Solution {
+    public static ArrayList<Integer> alternateSort(int[] arr) {
+
+        // Your code goes here
+        ArrayList<Integer> res = new ArrayList<Integer>();
+          Arrays.sort(arr);
+          int i = 0;
+          int j = arr.length-1;
+          int p=0;
+          while(i<=j){
+              if(p%2==0){
+                  res.add(arr[j]);
+                  j--;
+              }
+              else{
+                  res.add(arr[i]);
+                  i++;
+              }
+              p++;
+          }
+          return res;
+    }
+}
