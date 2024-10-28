@@ -1,0 +1,13 @@
+class Solution {
+    ArrayList<Integer> removeDuplicate(int arr[]) {
+        HashSet<Integer> set = new HashSet<>();
+        ArrayList<Integer> list = new ArrayList<>();
+        for(int num : arr){
+            if(!set.contains(num)){
+                list.add(num);
+                set.add(num);
+            }
+        }
+        return list;
+    }
+}
