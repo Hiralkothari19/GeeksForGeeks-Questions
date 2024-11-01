@@ -1,0 +1,29 @@
+class Solution {
+    public long maxSum(Long[] arr) {
+        // Sort the array
+        Arrays.sort(arr);
+        int n = arr.length;
+        Long[] rearranged = new Long[n];
+        
+        // Two pointers for rearranging
+        int left = 0;
+        int right = n - 1;
+        
+        // Fill rearranged array
+        for (int i = 0; i < n; i++) {
+            if (i % 2 == 0) {
+                rearranged[i] = arr[left++];
+            } else {
+                rearranged[i] = arr[right--];
+            }
+        }
+        
+        // Calculate maximum sum of absolute differences
+        long sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += Math.abs(rearranged[i] - rearranged[(i + 1) % n]);
+        }
+        
+        return sum;
+    }
+}
