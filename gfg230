@@ -1,0 +1,35 @@
+/*Complete the function below.
+Node is as follows:
+class Tree
+{
+      int data;
+      Tree left,right;
+      Tree(int d){
+          data=d;
+          left=null;
+          right=null;
+}
+}*/
+class Solution {
+    public static int treePathsSum(Node root) {
+        // add code here.
+        return myFunction(root, 0);
+    }
+    
+    public static int myFunction(Node root, int sum) {
+        if (root == null) {
+            return 0;
+        }
+        
+        // Update the sum for the current path
+        sum = sum * 10 + root.data;
+        
+        // If it's a leaf node, return the current sum
+        if (root.left == null && root.right == null) {
+            return sum;
+        }
+        
+        // Recur for left and right subtrees and return the sum
+        return myFunction(root.left, sum) + myFunction(root.right, sum);
+    }
+}
