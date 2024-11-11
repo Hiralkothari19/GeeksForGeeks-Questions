@@ -1,0 +1,6 @@
+class Solution {
+    // Function to return a list containing the union of the two arrays.
+    public static ArrayList<Integer> findUnion(int a[], int b[]) {
+        // add your code here
+    }
+}
