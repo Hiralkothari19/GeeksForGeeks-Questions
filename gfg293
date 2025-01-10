@@ -1,0 +1,16 @@
+class Solution {
+    ArrayList<Integer> countDistinct(int arr[], int k) {
+        // code here
+        int count=0;
+        ArrayList<Integer>al=new ArrayList<>();
+           HashSet<Integer>hs=new HashSet<>();
+         for(int i=0;i<arr.length-k+1;i++){
+             for(int j=i;j<k+i;j++){
+                 hs.add(arr[j]);
+             }
+             al.add(hs.size());
+             hs.clear();
+         }
+         return al;
+    }
+}
