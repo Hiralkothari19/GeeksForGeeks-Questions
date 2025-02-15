@@ -1,0 +1,30 @@
+/*
+class Node
+{
+    int data;
+    Node left, right;
+
+    public Node(int d)
+    {
+        data = d;
+        left = right = null;
+    }
+}
+*/
+
+class Solution {
+    Node LCA(Node root, Node n1, Node n2) {
+        // your code here.
+        int minv = Math.min(n1.data,n2.data);
+        int maxv = Math.max(n1.data,n2.data);
+        while(root!=null){
+        int d = root.data;
+        if(d>maxv) 
+            root = root.left;
+        else if(d<minv)
+            root = root.right;
+        else return root;
+        }
+        return null;
+    }
+}
